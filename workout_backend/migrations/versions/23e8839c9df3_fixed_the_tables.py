@@ -1,8 +1,8 @@
-"""add table constraints
+"""FIxed the tables
 
-Revision ID: 31a82f91cf11
+Revision ID: 23e8839c9df3
 Revises: 
-Create Date: 2026-04-12 10:35:36.066060
+Create Date: 2026-04-14 21:49:55.775138
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '31a82f91cf11'
+revision = '23e8839c9df3'
 down_revision = None
 branch_labels = None
 depends_on = None

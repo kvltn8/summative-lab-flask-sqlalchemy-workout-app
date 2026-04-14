@@ -3,11 +3,9 @@ from sqlalchemy.orm import validates
 
 db = SQLAlchemy()
 
-
 class Exercise(db.Model):
     __tablename__ = "exercises"
 
-    # Table constraints
     __table_args__ = (
         db.CheckConstraint("name != ''", name="exercise_name_not_empty"),
         db.CheckConstraint(
@@ -21,9 +19,12 @@ class Exercise(db.Model):
     category = db.Column(db.String, nullable=False)
     equipment_needed = db.Column(db.Boolean, default=False)
 
-    workout_exercises = db.relationship("WorkoutExercise", back_populates="exercise", cascade="all, delete-orphan")
+    workout_exercises = db.relationship(
+        "WorkoutExercise",
+        back_populates="exercise",
+        cascade="all, delete-orphan"
+    )
 
-    # Model validations
     @validates("name")
     def validate_name(self, key, value):
         if not value:
@@ -40,7 +41,6 @@ class Exercise(db.Model):
 class Workout(db.Model):
     __tablename__ = "workouts"
 
-    # Table constraints
     __table_args__ = (
         db.CheckConstraint("duration_minutes > 0", name="positive_duration"),
     )
@@ -50,9 +50,12 @@ class Workout(db.Model):
     duration_minutes = db.Column(db.Integer, nullable=False)
     notes = db.Column(db.Text)
 
-    workout_exercises = db.relationship("WorkoutExercise", back_populates="workout", cascade="all, delete-orphan")
+    workout_exercises = db.relationship(
+        "WorkoutExercise",
+        back_populates="workout",
+        cascade="all, delete-orphan"
+    )
 
-    # Model validations
     @validates("duration_minutes")
     def validate_duration(self, key, value):
         if value <= 0:
