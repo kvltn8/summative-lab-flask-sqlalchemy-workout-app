@@ -12,8 +12,6 @@ A backend REST API for personal trainers to track workouts and exercises, built 
 pipenv install    # Installs all required packages
 pipenv shell      # Activates the virtual environment
 cd workout_backend  # Moves into the app folder
-flask db init     # Sets up database migrations
-flask db migrate -m "init"  # Creates initial database tables
 flask db upgrade head  # Applies migrations to the database
 python seed.py    # Adds sample workout data
 python app.py     # Starts the server
@@ -42,6 +40,7 @@ Create a workout:
   "duration_minutes": 45,
   "notes": "Morning cardio"
 }
+
 Create an exercise:
 
 ```json
